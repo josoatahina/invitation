@@ -36,7 +36,9 @@ html,body{margin:0;padding:0}
 body{
   font-family:var(--font-sans);
   color:var(--ink);
-  background:var(--paper);
+  background:
+    radial-gradient(ellipse at 50% 20%, #163864 0%, #0F2A52 55%, #0A1F43 100%);
+  background-attachment:fixed;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
@@ -518,7 +520,8 @@ a{color:inherit}
 }
 
 @media (min-width:720px){
-  .site{box-shadow:0 0 60px rgba(10,21,64,.1)}
+  .site{box-shadow:0 0 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.04)}
+  .curtain-stage{box-shadow:0 0 80px rgba(0,0,0,.4)}
   .hero{padding:var(--sec-pad-y) var(--sec-pad-x-wide) 30px}
   .countdown-section{padding:var(--sec-pad-y) var(--sec-pad-x-wide) 24px}
   .section{padding:var(--sec-pad-y) var(--sec-pad-x-wide) 20px}
