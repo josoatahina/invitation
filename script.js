@@ -23,11 +23,13 @@ function openCurtain(){
   if (curtain.classList.contains('opening-anim')) return;
   curtain.classList.add('opening-anim');
 
+  // Au moment où les rideaux sont totalement fermés, on place le site derrière
   setTimeout(() => {
     site.setAttribute('aria-hidden','false');
     site.classList.add('visible');
   }, 950);
 
+  // Fin d'animation : on retire l'overlay
   setTimeout(() => {
     opening.classList.add('gone');
     document.body.style.overflow = 'auto';
@@ -36,11 +38,8 @@ function openCurtain(){
 openBtn.addEventListener('click', openCurtain);
 document.body.style.overflow = 'hidden';
 
-/* =========================================================
-   COMPTE À REBOURS — jours en gros + h/m/s en grille
-   ========================================================= */
-const cdBig = document.getElementById('cdDays');
 const cdEls = {
+  days:    document.querySelector('[data-k="days"]'),
   hours:   document.querySelector('[data-k="hours"]'),
   minutes: document.querySelector('[data-k="minutes"]'),
   seconds: document.querySelector('[data-k="seconds"]'),
@@ -52,20 +51,18 @@ function tick(){
   const h = Math.floor((diff % 86400000) / 3600000);
   const m = Math.floor((diff % 3600000) / 60000);
   const s = Math.floor((diff % 60000) / 1000);
-  if (cdBig) cdBig.textContent = d;
-  if (cdEls.hours)   cdEls.hours.textContent   = pad(h);
-  if (cdEls.minutes) cdEls.minutes.textContent = pad(m);
-  if (cdEls.seconds) cdEls.seconds.textContent = pad(s);
+  cdEls.days.textContent    = d;
+  cdEls.hours.textContent   = pad(h);
+  cdEls.minutes.textContent = pad(m);
+  cdEls.seconds.textContent = pad(s);
 }
 tick();
 setInterval(tick, 1000);
 
-/* =========================================================
-   DRAWER
-   ========================================================= */
 const burger = document.getElementById('burger');
 const drawer = document.getElementById('drawer');
 
+// Crée un backdrop pour fermer en cliquant à côté
 const backdrop = document.createElement('div');
 backdrop.className = 'drawer-backdrop';
 document.body.appendChild(backdrop);
@@ -87,9 +84,6 @@ burger.addEventListener('click', (e) => {
 backdrop.addEventListener('click', closeDrawer);
 drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
-/* =========================================================
-   SMOOTH SCROLL — ancres et "scroll-next"
-   ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
@@ -101,29 +95,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* =========================================================
-   APPARITION DES SCÈNES AU SCROLL (IntersectionObserver)
-   ========================================================= */
-const scenes = document.querySelectorAll('.scene');
-const sceneIO = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting){
-      entry.target.classList.add('in-view');
-    } else {
-      // Replay à chaque entrée dans le viewport pour un effet immersif
-      if (entry.boundingClientRect.top > 0){
-        entry.target.classList.remove('in-view');
-      }
-    }
-  });
-}, { threshold: 0.18 });
-scenes.forEach(s => sceneIO.observe(s));
-
-/* =========================================================
-   TABBAR actif selon le scroll
-   ========================================================= */
 const tabs = document.querySelectorAll('.tabbar .tab');
-const tabSections = Array.from(tabs).map(t => document.getElementById(t.dataset.section)).filter(Boolean);
+const sections = Array.from(tabs).map(t => document.getElementById(t.dataset.section)).filter(Boolean);
 
 tabs.forEach(t => {
   t.addEventListener('click', () => {
@@ -132,7 +105,8 @@ tabs.forEach(t => {
   });
 });
 
-const tabIO = new IntersectionObserver((entries) => {
+// Observer pour mettre à jour l'onglet actif selon le scroll
+const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting){
       const id = entry.target.id;
@@ -140,11 +114,8 @@ const tabIO = new IntersectionObserver((entries) => {
     }
   });
 }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-tabSections.forEach(s => tabIO.observe(s));
+sections.forEach(s => io.observe(s));
 
-/* =========================================================
-   JEU
-   ========================================================= */
 document.querySelectorAll('.choices').forEach(group => {
   group.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
@@ -191,9 +162,6 @@ quizForm.addEventListener('submit', (e) => {
   setTimeout(() => { quizOk.hidden = true; }, 5000);
 });
 
-/* =========================================================
-   RSVP
-   ========================================================= */
 const rsvp = document.getElementById('rsvpForm');
 const rsvpOk = document.getElementById('rsvpOk');
 rsvp.addEventListener('submit', (e) => {
