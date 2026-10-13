@@ -1,41 +1,36 @@
 const COUPLE_EMAIL = 'jt.raobelina@gmail.com';
 const TARGET = new Date('2026-11-29T09:30:00+03:00').getTime();
 
-const curtain  = document.getElementById('curtainStage');
-const openBtn  = document.getElementById('openBtn');
 const opening  = document.getElementById('opening');
 const site     = document.getElementById('site');
+const envelope = document.getElementById('envelope');
+const envCta   = document.getElementById('envCta');
 
-(function makePleats(){
-  const N = 8;
-  curtain.querySelectorAll('.curtain').forEach(panel => {
-    const first = panel.firstChild;
-    for (let i = 0; i < N; i++){
-      const p = document.createElement('div');
-      p.className = 'pleat';
-      p.style.setProperty('--i', i);
-      panel.insertBefore(p, first);
-    }
-  });
-})();
+function openEnvelope(){
+  if (envelope.classList.contains('open')) return;
+  envelope.classList.add('open');
+  envCta.classList.add('hidden');
 
-function openCurtain(){
-  if (curtain.classList.contains('opening-anim')) return;
-  curtain.classList.add('opening-anim');
-
-  // Au moment où les rideaux sont totalement fermés, on place le site derrière
+  // La lettre sort complètement puis le site apparaît derrière
   setTimeout(() => {
     site.setAttribute('aria-hidden','false');
     site.classList.add('visible');
-  }, 950);
+  }, 2000);
 
   // Fin d'animation : on retire l'overlay
   setTimeout(() => {
     opening.classList.add('gone');
     document.body.style.overflow = 'auto';
-  }, 2500);
+  }, 2900);
 }
-openBtn.addEventListener('click', openCurtain);
+
+envelope.addEventListener('click', openEnvelope);
+envelope.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' '){
+    e.preventDefault();
+    openEnvelope();
+  }
+});
 document.body.style.overflow = 'hidden';
 
 const cdEls = {

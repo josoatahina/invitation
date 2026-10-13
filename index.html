@@ -13,43 +13,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
-<section id="opening" class="opening" aria-label="Page de couverture">
-  <div class="curtain-stage" id="curtainStage">
-    <div class="curtain curtain-left" aria-hidden="true">
-      <div class="curtain-rope"></div>
-    </div>
-    <div class="curtain curtain-right" aria-hidden="true">
-      <div class="curtain-rope"></div>
-    </div>
+<section id="opening" class="opening" aria-label="Enveloppe d'invitation">
+  <div class="env-scene">
+    <button type="button" class="envelope" id="envelope" aria-label="Ouvrir l'enveloppe">
 
-    <div class="curtain-cover" id="curtainCover">
-      <div class="cover-frame">
-        <span class="cover-corner tl" aria-hidden="true"></span>
-        <span class="cover-corner tr" aria-hidden="true"></span>
-        <span class="cover-corner bl" aria-hidden="true"></span>
-        <span class="cover-corner br" aria-hidden="true"></span>
-
-        <div class="cover-mono" aria-hidden="true">
-          <span>J</span><em>&amp;</em><span>M</span>
-        </div>
-        <p class="cover-eyebrow">Avec toute notre joie</p>
-        <h1 class="cover-couple">
-          <span>Josoa Tahina</span>
-          <span class="cover-amp">&amp;</span>
-          <span>Mialitoky</span>
-        </h1>
-        <p class="cover-date">29 · 11 · 2026</p>
-        <p class="cover-place"><em>Antananarivo</em></p>
-
-        <button type="button" class="tap-to-open" id="openBtn">
-          <span>APPUYEZ POUR OUVRIR</span>
-        </button>
+      <!-- Dos de l'enveloppe (rectangle + plis latéraux) -->
+      <div class="env-body" aria-hidden="true">
+        <span class="env-fold env-fold-l"></span>
+        <span class="env-fold env-fold-r"></span>
+        <span class="env-fold env-fold-b"></span>
       </div>
-    </div>
+
+      <!-- Lettre à l'intérieur (sortira à l'ouverture) -->
+      <div class="env-letter" aria-hidden="true">
+        <span class="letter-corner tl"></span>
+        <span class="letter-corner tr"></span>
+        <span class="letter-corner bl"></span>
+        <span class="letter-corner br"></span>
+        <p class="letter-eyebrow">Vous êtes conviés</p>
+        <h2 class="letter-couple">
+          <span>Josoa Tahina</span>
+          <span class="amp">&amp;</span>
+          <span>Mialitoky</span>
+        </h2>
+        <p class="letter-date">29 · 11 · 2026</p>
+        <p class="letter-place"><em>Antananarivo</em></p>
+      </div>
+
+      <!-- Rabat supérieur (triangle qui s'ouvre) -->
+      <div class="env-flap" aria-hidden="true">
+        <span class="flap-inner"></span>
+      </div>
+
+      <!-- Sceau de cire -->
+      <div class="env-seal" aria-hidden="true">
+        <span class="seal-mono">J<em>&amp;</em>M</span>
+      </div>
+    </button>
+
+    <p class="env-cta" id="envCta">
+      <span class="env-cta-ico" aria-hidden="true">✦</span>
+      Appuyez sur l'enveloppe
+    </p>
   </div>
 </section>
 
@@ -460,6 +469,6 @@
   </a>
 </nav>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>
