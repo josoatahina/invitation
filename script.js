@@ -1,36 +1,20 @@
 const COUPLE_EMAIL = 'jt.raobelina@gmail.com';
 const TARGET = new Date('2026-11-29T09:30:00+03:00').getTime();
 
-const opening  = document.getElementById('opening');
-const site     = document.getElementById('site');
-const envelope = document.getElementById('envelope');
-const envCta   = document.getElementById('envCta');
+const opening = document.getElementById('opening');
+const site    = document.getElementById('site');
 
-function openEnvelope(){
-  if (envelope.classList.contains('open')) return;
-  envelope.classList.add('open');
-  envCta.classList.add('hidden');
-
-  // La lettre sort complètement puis le site apparaît derrière
-  setTimeout(() => {
-    site.setAttribute('aria-hidden','false');
-    site.classList.add('visible');
-  }, 2000);
-
-  // Fin d'animation : on retire l'overlay
-  setTimeout(() => {
-    opening.classList.add('gone');
-    document.body.style.overflow = 'auto';
-  }, 2900);
+// Étape 1 — l'accueil est un visuel floral plein écran.
+// Un clic suffit pour l'instant à révéler le site derrière, en attendant
+// la vraie interaction d'ouverture.
+function dismissOpening(){
+  if (opening.classList.contains('gone')) return;
+  site.setAttribute('aria-hidden','false');
+  site.classList.add('visible');
+  opening.classList.add('gone');
+  document.body.style.overflow = 'auto';
 }
-
-envelope.addEventListener('click', openEnvelope);
-envelope.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' '){
-    e.preventDefault();
-    openEnvelope();
-  }
-});
+opening.addEventListener('click', dismissOpening);
 document.body.style.overflow = 'hidden';
 
 const cdEls = {
