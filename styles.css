@@ -88,35 +88,39 @@ a{color:inherit}
 }
 .floral-inner-mirror{transform:scaleX(-1)}
 
-/* Tranche de la porte — un bandeau fin perpendiculaire à la face,
+/* Tranche de la porte — un bandeau perpendiculaire à la face,
    positionné sur le bord intérieur. Invisible quand la porte est
    fermée (vu de côté), progressivement révélé pendant la rotation
-   pour donner l'illusion d'une vraie épaisseur de panneau. */
+   pour donner l'illusion d'un vrai panneau avec de l'épaisseur. */
 .door-thickness{
   position:absolute;
   top:0;bottom:0;
-  width:14px;
+  width:22px;
   background:
     linear-gradient(90deg,
-      rgba(10,10,10,.3) 0%,
-      #d8bba9 20%,
-      #c9a695 50%,
-      #a78472 80%,
-      rgba(10,10,10,.35) 100%);
+      #4a2b1e 0%,
+      #a07a67 25%,
+      #c9a08a 55%,
+      #845a46 85%,
+      #3a1f14 100%);
   box-shadow:
-    inset 0 0 16px rgba(60,25,15,.45),
-    0 0 8px rgba(0,0,0,.3);
-  backface-visibility:hidden;
+    inset 0 0 20px rgba(0,0,0,.55),
+    inset 0 1px 2px rgba(255,220,200,.3),
+    0 0 10px rgba(0,0,0,.4);
+  /* on ne cache PAS la backface : la tranche doit rester visible
+     quand la porte est largement ouverte */
 }
 .floral-door-l .door-thickness{
   right:0;
   transform-origin:right center;
-  transform:rotateY(-90deg);
+  /* rotateY(+90°) combiné à la rotation d'ouverture (-105°) de la
+     porte donne un angle visible côté spectateur (-15°). */
+  transform:rotateY(90deg);
 }
 .floral-door-r .door-thickness{
   left:0;
   transform-origin:left center;
-  transform:rotateY(90deg);
+  transform:rotateY(-90deg);
 }
 
 /* État "ouvert" — les deux moitiés pivotent vers l'avant comme des portes.
