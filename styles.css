@@ -51,15 +51,19 @@ a{color:inherit}
 .opening{
   position:fixed;inset:0;z-index:1000;
   overflow:hidden;
-  background:#E8CFC2;
+  background:#1a1210;
+  display:grid;place-items:center;
   transition:opacity .6s ease, visibility .6s ease;
 }
 .opening.gone{opacity:0;visibility:hidden;pointer-events:none}
 
 .floral-cover{
-  position:absolute;inset:0;
-  display:flex;
+  position:relative;
   width:100%;height:100%;
+  max-width:var(--max);
+  display:flex;
+  background:#E8CFC2;
+  box-shadow:0 0 60px rgba(0,0,0,.5);
 }
 .floral-half{
   flex:1;min-width:0;
