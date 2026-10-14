@@ -165,7 +165,99 @@ a{color:inherit}
   transition:background .8s ease 1.4s, box-shadow .8s ease 1.4s, opacity .9s ease .9s, visibility .9s ease .9s;
 }
 .opening.opened{background:transparent}
-.opening.opened .floral-cover{background:transparent;box-shadow:none}
+.opening.opened .floral-cover{box-shadow:none}
+.opening.leaving{opacity:0;transition:opacity .6s ease}
+
+/* =========================================================
+   INTÉRIEUR CRÈME — révélé derrière les portes qui s'ouvrent
+   ========================================================= */
+.cover-interior{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse at 50% 35%, #f6e3cf 0%, #ead0b7 55%, #d9b89a 100%);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.interior-arch{
+  position:absolute;
+  top:4%;left:5%;right:5%;bottom:12%;
+  width:90%;height:84%;
+  pointer-events:none;
+  color:#8b5a3c;
+}
+
+.interior-corner{
+  position:absolute;
+  width:38%;max-width:170px;
+  aspect-ratio:180/220;
+  pointer-events:none;
+  mix-blend-mode:multiply;
+}
+.interior-corner.tl{top:6%;left:5%}
+.interior-corner.br{bottom:10%;right:5%;transform:rotate(180deg)}
+
+.interior-content{
+  position:relative;z-index:2;
+  text-align:center;
+  color:#5a372d;
+  padding:0 36px;
+  max-width:320px;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .6s ease, transform .6s ease;
+  transition-delay:1.5s;
+}
+.opening.opened .interior-content{opacity:1;transform:translateY(0)}
+
+.int-eyebrow{
+  margin:0 0 20px;
+  font-family:var(--font-sans);
+  font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;
+  color:#8b5a3c;opacity:.85;
+}
+.int-couple{
+  margin:0;
+  font-family:var(--font-serif);font-style:italic;font-weight:500;
+  font-size:clamp(32px,9vw,46px);
+  line-height:1.08;
+  color:#4a2d1a;
+}
+.int-couple span{display:block}
+.int-couple em{
+  display:block;
+  font-size:.55em;font-weight:400;
+  margin:6px 0;
+  opacity:.75;
+}
+.int-date{
+  margin:24px 0 4px;
+  font-family:var(--font-serif);font-size:14.5px;
+  letter-spacing:.32em;color:#5a372d;
+}
+.int-place{
+  margin:0 0 32px;
+  font-family:var(--font-serif);font-style:italic;
+  font-size:15px;color:#5a372d;opacity:.85;
+}
+.int-enter{
+  padding:11px 26px;
+  background:rgba(255,250,243,.6);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(139,90,60,.35);
+  border-radius:30px;
+  color:#4a2d1a;
+  font-family:var(--font-serif);font-style:italic;
+  font-size:14px;letter-spacing:.1em;
+  cursor:pointer;
+  transition:background .25s ease, transform .2s ease;
+  box-shadow:0 4px 14px rgba(90,55,45,.15);
+}
+.int-enter:hover{
+  background:rgba(255,250,243,.85);
+  transform:translateY(-1px);
+}
+.int-enter:active{transform:translateY(0)}
 
 /* Indication subtile au centre, qui disparaît à l'ouverture */
 .floral-hint{

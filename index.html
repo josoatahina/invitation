@@ -13,12 +13,74 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=16-tone">
+<link rel="stylesheet" href="styles.css?v=17-interior">
 </head>
 <body>
 
 <section id="opening" class="opening" aria-label="Page d'accueil">
   <div class="floral-cover" id="floralCover" role="button" tabindex="0" aria-label="Ouvrir l'invitation">
+
+    <div class="cover-interior" aria-hidden="true">
+      <svg class="interior-arch" viewBox="0 0 400 640" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 620 L30 180 Q30 40 200 40 Q370 40 370 180 L370 620"
+              fill="none" stroke="#8b5a3c" stroke-width="1.5" opacity=".65"/>
+        <path d="M44 620 L44 186 Q44 54 200 54 Q356 54 356 186 L356 620"
+              fill="none" stroke="#8b5a3c" stroke-width="0.6" opacity=".5"/>
+      </svg>
+
+      <svg class="interior-corner tl" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#a67a5e" fill="none" stroke-width="1" stroke-linecap="round">
+          <path d="M18 18 Q 55 70 95 55 M 95 55 Q 135 95 158 180" opacity=".75"/>
+          <path d="M55 42 Q 72 54 65 78" opacity=".55"/>
+          <path d="M125 92 Q 142 104 134 128" opacity=".55"/>
+          <circle cx="38" cy="36" r="11" opacity=".65"/>
+          <circle cx="38" cy="36" r="5" fill="#a67a5e" opacity=".35"/>
+          <path d="M38 24 Q 28 30 28 42 Q 38 48 48 42 Q 50 30 38 24 Z" fill="#a67a5e" opacity=".2"/>
+          <circle cx="86" cy="62" r="9" opacity=".6"/>
+          <circle cx="86" cy="62" r="4" fill="#a67a5e" opacity=".3"/>
+          <circle cx="128" cy="138" r="12" opacity=".6"/>
+          <circle cx="128" cy="138" r="6" fill="#a67a5e" opacity=".3"/>
+          <circle cx="152" cy="192" r="7" opacity=".55"/>
+          <circle cx="152" cy="192" r="3" fill="#a67a5e" opacity=".3"/>
+          <path d="M60 50 Q 48 58 54 72" opacity=".55"/>
+          <path d="M105 90 Q 95 102 102 118" opacity=".55"/>
+          <path d="M135 158 Q 148 168 142 180" opacity=".55"/>
+        </g>
+      </svg>
+
+      <svg class="interior-corner br" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#a67a5e" fill="none" stroke-width="1" stroke-linecap="round">
+          <path d="M18 18 Q 55 70 95 55 M 95 55 Q 135 95 158 180" opacity=".75"/>
+          <path d="M55 42 Q 72 54 65 78" opacity=".55"/>
+          <path d="M125 92 Q 142 104 134 128" opacity=".55"/>
+          <circle cx="38" cy="36" r="11" opacity=".65"/>
+          <circle cx="38" cy="36" r="5" fill="#a67a5e" opacity=".35"/>
+          <path d="M38 24 Q 28 30 28 42 Q 38 48 48 42 Q 50 30 38 24 Z" fill="#a67a5e" opacity=".2"/>
+          <circle cx="86" cy="62" r="9" opacity=".6"/>
+          <circle cx="86" cy="62" r="4" fill="#a67a5e" opacity=".3"/>
+          <circle cx="128" cy="138" r="12" opacity=".6"/>
+          <circle cx="128" cy="138" r="6" fill="#a67a5e" opacity=".3"/>
+          <circle cx="152" cy="192" r="7" opacity=".55"/>
+          <circle cx="152" cy="192" r="3" fill="#a67a5e" opacity=".3"/>
+          <path d="M60 50 Q 48 58 54 72" opacity=".55"/>
+          <path d="M105 90 Q 95 102 102 118" opacity=".55"/>
+          <path d="M135 158 Q 148 168 142 180" opacity=".55"/>
+        </g>
+      </svg>
+
+      <div class="interior-content">
+        <p class="int-eyebrow">Avec toute notre joie</p>
+        <h1 class="int-couple">
+          <span>Josoa Tahina</span>
+          <em>&amp;</em>
+          <span>Mialitoky</span>
+        </h1>
+        <p class="int-date">29 · 11 · 2026</p>
+        <p class="int-place"><em>Antananarivo</em></p>
+        <button type="button" class="int-enter" id="enterBtn">Découvrir →</button>
+      </div>
+    </div>
+
     <div class="floral-door floral-door-l" aria-hidden="true">
       <div class="floral-inner"></div>
       <div class="door-trim"></div>
@@ -29,6 +91,7 @@
       <div class="door-trim"></div>
       <div class="door-thickness"></div>
     </div>
+
     <span class="floral-hint" aria-hidden="true">Appuyer pour ouvrir</span>
   </div>
 </section>
@@ -440,6 +503,6 @@
   </a>
 </nav>
 
-<script src="script.js?v=15-match"></script>
+<script src="script.js?v=16-interior"></script>
 </body>
 </html>

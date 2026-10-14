@@ -1,25 +1,16 @@
 const COUPLE_EMAIL = 'jt.raobelina@gmail.com';
 const TARGET = new Date('2026-11-29T09:30:00+03:00').getTime();
 
-const opening = document.getElementById('opening');
-const site    = document.getElementById('site');
-const cover   = document.getElementById('floralCover');
+const opening  = document.getElementById('opening');
+const site     = document.getElementById('site');
+const cover    = document.getElementById('floralCover');
+const enterBtn = document.getElementById('enterBtn');
 
-// Étape 2 — clic au centre : les deux moitiés s'ouvrent comme des portes
-// qui pivotent sur leur bord extérieur, révélant le site derrière.
+// Étape 1 — clic sur la couverture : les portes pivotent et révèlent
+// l'intérieur crème (nom, date, bouton « Découvrir »).
 function openDoors(){
   if (opening.classList.contains('opened')) return;
   opening.classList.add('opened');
-
-  // Le site devient visible derrière les portes qui s'ouvrent
-  site.setAttribute('aria-hidden','false');
-  site.classList.add('visible');
-
-  // Fin d'animation des portes (2 s) + marge → on retire l'overlay
-  setTimeout(() => {
-    opening.classList.add('gone');
-    document.body.style.overflow = 'auto';
-  }, 2200);
 }
 cover.addEventListener('click', openDoors);
 cover.addEventListener('keydown', (e) => {
@@ -28,6 +19,21 @@ cover.addEventListener('keydown', (e) => {
     openDoors();
   }
 });
+
+// Étape 2 — l'invité clique « Découvrir » : on bascule sur le site navy.
+if (enterBtn){
+  enterBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    site.setAttribute('aria-hidden','false');
+    site.classList.add('visible');
+    opening.classList.add('leaving');
+    setTimeout(() => {
+      opening.classList.add('gone');
+      document.body.style.overflow = 'auto';
+    }, 650);
+  });
+}
+
 document.body.style.overflow = 'hidden';
 
 const cdEls = {
