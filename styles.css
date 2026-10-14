@@ -72,10 +72,10 @@ a{color:inherit}
 
 .floral-door{
   flex:1;min-width:0;position:relative;
-  transition:transform 1.6s cubic-bezier(.55,.05,.3,1);
+  transition:transform 2.4s cubic-bezier(.4,.02,.3,1), filter 2.4s ease;
   transform-style:preserve-3d;
   backface-visibility:hidden;
-  will-change:transform;
+  will-change:transform, filter;
 }
 .floral-door-l{transform-origin:left center}
 .floral-door-r{transform-origin:right center}
@@ -88,14 +88,22 @@ a{color:inherit}
 }
 .floral-inner-mirror{transform:scaleX(-1)}
 
-/* État "ouvert" — les deux moitiés pivotent vers l'avant comme des portes */
-.opening.opened .floral-door-l{transform:rotateY(-115deg)}
-.opening.opened .floral-door-r{transform:rotateY(115deg)}
+/* État "ouvert" — les deux moitiés pivotent vers l'avant comme des portes.
+   La rotation est accompagnée d'un assombrissement progressif pour
+   simuler l'ombre que prend un panneau en train de pivoter. */
+.opening.opened .floral-door-l{
+  transform:rotateY(-105deg);
+  filter:brightness(.6);
+}
+.opening.opened .floral-door-r{
+  transform:rotateY(105deg);
+  filter:brightness(.6);
+}
 
 /* Dès l'ouverture, les fonds s'effacent pour laisser voir le site derrière */
 .opening,
 .floral-cover{
-  transition:background .6s ease .5s, box-shadow .6s ease .5s, opacity .6s ease, visibility .6s ease;
+  transition:background 1s ease 1.4s, box-shadow 1s ease 1.4s, opacity .6s ease, visibility .6s ease;
 }
 .opening.opened{background:transparent}
 .opening.opened .floral-cover{background:transparent;box-shadow:none}

@@ -11,15 +11,15 @@ function openDoors(){
   if (opening.classList.contains('opened')) return;
   opening.classList.add('opened');
 
-  // Le site devient visible immédiatement derrière les portes qui s'ouvrent
+  // Le site devient visible derrière les portes qui s'ouvrent
   site.setAttribute('aria-hidden','false');
   site.classList.add('visible');
 
-  // Fin d'animation des portes → on retire l'overlay
+  // Fin d'animation des portes (2,4 s) + marge → on retire l'overlay
   setTimeout(() => {
     opening.classList.add('gone');
     document.body.style.overflow = 'auto';
-  }, 1700);
+  }, 2600);
 }
 cover.addEventListener('click', openDoors);
 cover.addEventListener('keydown', (e) => {
