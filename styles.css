@@ -146,22 +146,23 @@ a{color:inherit}
   transform:rotateY(-90deg);
 }
 
-/* État "ouvert" — les deux moitiés pivotent vers l'avant comme des portes.
-   La rotation est accompagnée d'un assombrissement progressif pour
-   simuler l'ombre que prend un panneau en train de pivoter. */
+/* État "ouvert" — les deux moitiés pivotent comme des portes, mais
+   s'arrêtent AVANT 90° pour rester visibles comme des panneaux inclinés
+   jusqu'au bout de l'animation (jamais vues en tranche ni dans le dos). */
 .opening.opened .floral-door-l{
-  transform:rotateY(-105deg);
-  filter:brightness(.6);
+  transform:rotateY(-78deg);
+  filter:brightness(.8);
 }
 .opening.opened .floral-door-r{
-  transform:rotateY(105deg);
-  filter:brightness(.6);
+  transform:rotateY(78deg);
+  filter:brightness(.8);
 }
 
-/* Dès l'ouverture, les fonds s'effacent pour laisser voir le site derrière */
+/* Pendant l'ouverture, le fond du cadre s'estompe pour laisser voir le
+   site entre les portes restées visibles sur les côtés. */
 .opening,
 .floral-cover{
-  transition:background 1s ease 1.4s, box-shadow 1s ease 1.4s, opacity .6s ease, visibility .6s ease;
+  transition:background 1s ease 1.2s, box-shadow 1s ease 1.2s, opacity .6s ease, visibility .6s ease;
 }
 .opening.opened{background:transparent}
 .opening.opened .floral-cover{background:transparent;box-shadow:none}
