@@ -67,7 +67,7 @@ a{color:inherit}
 }
 .floral-half{
   flex:1;min-width:0;
-  background:url("assets/floral-left.jpg?v=2") no-repeat center center;
+  background:url("assets/floral-left.jpg?v=3") no-repeat center center;
   background-size:cover;
 }
 .floral-half-r{
