@@ -3,18 +3,31 @@ const TARGET = new Date('2026-11-29T09:30:00+03:00').getTime();
 
 const opening = document.getElementById('opening');
 const site    = document.getElementById('site');
+const cover   = document.getElementById('floralCover');
 
-// Étape 1 — l'accueil est un visuel floral plein écran.
-// Un clic suffit pour l'instant à révéler le site derrière, en attendant
-// la vraie interaction d'ouverture.
-function dismissOpening(){
-  if (opening.classList.contains('gone')) return;
+// Étape 2 — clic au centre : les deux moitiés s'ouvrent comme des portes
+// qui pivotent sur leur bord extérieur, révélant le site derrière.
+function openDoors(){
+  if (opening.classList.contains('opened')) return;
+  opening.classList.add('opened');
+
+  // Le site devient visible immédiatement derrière les portes qui s'ouvrent
   site.setAttribute('aria-hidden','false');
   site.classList.add('visible');
-  opening.classList.add('gone');
-  document.body.style.overflow = 'auto';
+
+  // Fin d'animation des portes → on retire l'overlay
+  setTimeout(() => {
+    opening.classList.add('gone');
+    document.body.style.overflow = 'auto';
+  }, 1700);
 }
-opening.addEventListener('click', dismissOpening);
+cover.addEventListener('click', openDoors);
+cover.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' '){
+    e.preventDefault();
+    openDoors();
+  }
+});
 document.body.style.overflow = 'hidden';
 
 const cdEls = {

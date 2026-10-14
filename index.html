@@ -13,14 +13,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
 <section id="opening" class="opening" aria-label="Page d'accueil">
-  <div class="floral-cover" aria-hidden="true">
-    <div class="floral-half floral-half-l"></div>
-    <div class="floral-half floral-half-r"></div>
+  <div class="floral-cover" id="floralCover" role="button" tabindex="0" aria-label="Ouvrir l'invitation">
+    <div class="floral-door floral-door-l" aria-hidden="true">
+      <div class="floral-inner"></div>
+    </div>
+    <div class="floral-door floral-door-r" aria-hidden="true">
+      <div class="floral-inner floral-inner-mirror"></div>
+    </div>
+    <span class="floral-hint" aria-hidden="true">Appuyer pour ouvrir</span>
   </div>
 </section>
 
@@ -431,6 +436,6 @@
   </a>
 </nav>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>

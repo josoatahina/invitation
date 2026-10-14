@@ -46,7 +46,7 @@ img,svg{display:block;max-width:100%}
 a{color:inherit}
 
 /* =========================================================
-   PAGE D'ACCUEIL — visuel floral gaufré plein écran
+   PAGE D'ACCUEIL — visuel floral qui s'ouvre en deux portes
    ========================================================= */
 .opening{
   position:fixed;inset:0;z-index:1000;
@@ -64,18 +64,65 @@ a{color:inherit}
   display:flex;
   background:#E8CFC2;
   box-shadow:0 0 60px rgba(0,0,0,.5);
+  perspective:1800px;
+  cursor:pointer;
+  outline:none;
 }
-.floral-half{
-  flex:1;min-width:0;
+.floral-cover:focus-visible{box-shadow:0 0 60px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.4)}
+
+.floral-door{
+  flex:1;min-width:0;position:relative;
+  transition:transform 1.6s cubic-bezier(.55,.05,.3,1);
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  will-change:transform;
+}
+.floral-door-l{transform-origin:left center}
+.floral-door-r{transform-origin:right center}
+
+.floral-inner{
+  position:absolute;inset:0;
   background:url("assets/floral-left.jpg?v=3") no-repeat center center;
   background-size:cover;
+  backface-visibility:hidden;
 }
-.floral-half-r{
-  transform:scaleX(-1);
-}
+.floral-inner-mirror{transform:scaleX(-1)}
 
-/* Interaction temporaire — clic sur la page d'accueil pour voir le site */
-.opening{cursor:pointer}
+/* État "ouvert" — les deux moitiés pivotent vers l'avant comme des portes */
+.opening.opened .floral-door-l{transform:rotateY(-115deg)}
+.opening.opened .floral-door-r{transform:rotateY(115deg)}
+
+/* Dès l'ouverture, les fonds s'effacent pour laisser voir le site derrière */
+.opening,
+.floral-cover{
+  transition:background .6s ease .5s, box-shadow .6s ease .5s, opacity .6s ease, visibility .6s ease;
+}
+.opening.opened{background:transparent}
+.opening.opened .floral-cover{background:transparent;box-shadow:none}
+
+/* Indication subtile au centre, qui disparaît à l'ouverture */
+.floral-hint{
+  position:absolute;left:50%;bottom:18%;
+  padding:8px 18px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(90,55,45,.3);border-radius:30px;
+  color:#5a372d;
+  font-family:var(--font-serif);font-style:italic;font-size:13px;
+  letter-spacing:.08em;white-space:nowrap;
+  pointer-events:none;
+  animation:hint-pulse 2.4s ease-in-out infinite;
+  z-index:3;
+}
+.opening.opened .floral-hint{
+  animation:none;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+@keyframes hint-pulse{
+  0%,100%{transform:translate(-50%,0);opacity:.85}
+  50%{transform:translate(-50%,-4px);opacity:1}
+}
 
 /* Site principal — reste positionné sous le rideau */
 .site{
