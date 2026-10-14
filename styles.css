@@ -88,25 +88,26 @@ a{color:inherit}
 }
 .floral-inner-mirror{transform:scaleX(-1)}
 
-/* Bordure décorative 2D — un bandeau vertical sombre sur le bord
-   intérieur de chaque porte, posé à plat sur la face. Volontairement
-   contrasté pour être lisible aussi bien porte fermée que porte
-   ouverte. */
+/* Bordure 2D — un bandeau rose/beige lisse sur le bord intérieur de
+   chaque porte, posé à plat sur la face. Reproduit l'aspect de la
+   tranche d'un panneau plâtré/papier dans la même famille de teintes
+   que le motif floral, avec juste des ombres subtiles pour donner la
+   profondeur, comme dans la vidéo de référence. */
 .door-trim{
   position:absolute;
   top:0;bottom:0;
-  width:18px;
+  width:14px;
   background:
     linear-gradient(90deg,
-      rgba(40,22,14,.55) 0%,
-      rgba(90,55,38,.95) 20%,
-      rgba(60,35,22,1) 50%,
-      rgba(90,55,38,.95) 80%,
-      rgba(40,22,14,.55) 100%);
+      rgba(170,125,105,.6) 0%,
+      rgba(220,185,165,1) 25%,
+      rgba(236,210,192,1) 50%,
+      rgba(220,185,165,1) 75%,
+      rgba(170,125,105,.6) 100%);
   box-shadow:
-    inset 0 0 14px rgba(0,0,0,.6),
-    inset 1px 0 2px rgba(255,220,195,.4),
-    inset -1px 0 2px rgba(255,220,195,.4);
+    inset 0 0 10px rgba(140,90,70,.35),
+    inset 1px 0 1px rgba(255,235,220,.5),
+    inset -1px 0 1px rgba(255,235,220,.5);
   pointer-events:none;
   z-index:2;
 }
@@ -118,20 +119,18 @@ a{color:inherit}
 .door-thickness{
   position:absolute;
   top:0;bottom:0;
-  width:22px;
+  width:18px;
   background:
     linear-gradient(90deg,
-      #4a2b1e 0%,
-      #a07a67 25%,
-      #c9a08a 55%,
-      #845a46 85%,
-      #3a1f14 100%);
+      rgba(140,95,78,.5) 0%,
+      rgba(205,170,148,1) 20%,
+      rgba(232,207,190,1) 50%,
+      rgba(205,170,148,1) 80%,
+      rgba(140,95,78,.5) 100%);
   box-shadow:
-    inset 0 0 20px rgba(0,0,0,.55),
-    inset 0 1px 2px rgba(255,220,200,.3),
-    0 0 10px rgba(0,0,0,.4);
-  /* on ne cache PAS la backface : la tranche doit rester visible
-     quand la porte est largement ouverte */
+    inset 0 0 14px rgba(130,85,65,.4),
+    inset 0 1px 2px rgba(255,235,220,.4);
+  pointer-events:none;
 }
 .floral-door-l .door-thickness{
   right:0;
