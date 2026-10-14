@@ -88,34 +88,6 @@ a{color:inherit}
 }
 .floral-inner-mirror{transform:scaleX(-1)}
 
-/* Panneau décoratif arché sur chaque porte — un double trait brun
-   discret qui dessine le contour d'un panneau menuisé, pour que la
-   porte lise visuellement comme un battant architectural et pas
-   comme une simple surface fleurie. */
-.door-panel{
-  position:absolute;
-  top:5%;left:12%;right:12%;bottom:8%;
-  width:76%;height:87%;
-  pointer-events:none;
-  mix-blend-mode:multiply;
-  opacity:.75;
-  z-index:1;
-}
-
-/* Poignée ovale, montée sur le bord intérieur de la porte gauche —
-   gradient radial pour simuler le volume d'une bombe en relief,
-   fine décoration intérieure en traits bruns. */
-.door-handle{
-  position:absolute;
-  top:50%;
-  width:48px;height:72px;
-  transform:translateY(-50%);
-  pointer-events:none;
-  z-index:3;
-  filter:drop-shadow(0 4px 7px rgba(90,55,45,.45));
-}
-.floral-door-l .door-handle{right:6px}
-
 /* Bordure 2D — un bandeau rose/beige lisse sur le bord intérieur de
    chaque porte, posé à plat sur la face. Reproduit l'aspect de la
    tranche d'un panneau plâtré/papier dans la même famille de teintes
@@ -142,22 +114,30 @@ a{color:inherit}
 .floral-door-l .door-trim{right:0}
 .floral-door-r .door-trim{left:0}
 
-/* Tranche 3D — un bandeau perpendiculaire à la face, au bord intérieur,
-   révélé pendant la rotation pour donner l'épaisseur du panneau. */
+/* Tranche 3D — bandeau perpendiculaire à la face, au bord intérieur,
+   bien visible pendant la rotation pour qu'on comprenne que la porte
+   a de l'épaisseur. Plus large et plus contrastée qu'avant, avec un
+   dégradé dense (sans transparence) + ombres marquées pour que le
+   bord lise comme une vraie tranche de panneau en bois/plâtre. */
 .door-thickness{
   position:absolute;
   top:0;bottom:0;
-  width:18px;
+  width:36px;
   background:
     linear-gradient(90deg,
-      rgba(140,95,78,.5) 0%,
-      rgba(205,170,148,1) 20%,
-      rgba(232,207,190,1) 50%,
-      rgba(205,170,148,1) 80%,
-      rgba(140,95,78,.5) 100%);
+      #4a2d1e 0%,
+      #7a4a30 8%,
+      #b8835e 24%,
+      #d9ad87 44%,
+      #ecc8ab 58%,
+      #d9ad87 72%,
+      #a67046 88%,
+      #4a2d1e 100%);
   box-shadow:
-    inset 0 0 14px rgba(130,85,65,.4),
-    inset 0 1px 2px rgba(255,235,220,.4);
+    inset 0 0 24px rgba(50,25,10,.6),
+    inset 0 3px 4px rgba(255,230,210,.6),
+    inset 0 -3px 4px rgba(40,20,8,.65),
+    0 0 6px rgba(0,0,0,.3);
   pointer-events:none;
 }
 .floral-door-l .door-thickness{
@@ -171,6 +151,21 @@ a{color:inherit}
   left:0;
   transform-origin:left center;
   transform:rotateY(-90deg);
+}
+
+/* Ombre d'ouverture — projection subtile sur la tranche pour que la
+   lumière vienne d'un côté et accentue l'effet de volume. */
+.floral-door-l .door-thickness::after,
+.floral-door-r .door-thickness::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,
+    rgba(0,0,0,.35) 0%,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0) 60%,
+    rgba(0,0,0,.25) 100%);
+  mix-blend-mode:multiply;
 }
 
 /* État "ouvert" — les portes pivotent largement vers l'extérieur,
