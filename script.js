@@ -15,11 +15,11 @@ function openDoors(){
   site.setAttribute('aria-hidden','false');
   site.classList.add('visible');
 
-  // Fin d'animation des portes (2,4 s) + marge → on retire l'overlay
+  // Fin d'animation des portes (2 s) + marge → on retire l'overlay
   setTimeout(() => {
     opening.classList.add('gone');
     document.body.style.overflow = 'auto';
-  }, 2600);
+  }, 2200);
 }
 cover.addEventListener('click', openDoors);
 cover.addEventListener('keydown', (e) => {

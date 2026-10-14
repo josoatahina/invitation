@@ -72,7 +72,7 @@ a{color:inherit}
 
 .floral-door{
   flex:1;min-width:0;position:relative;
-  transition:transform 2.4s cubic-bezier(.4,.02,.3,1), filter 2.4s ease;
+  transition:transform 2s cubic-bezier(.5,.02,.3,1), filter 2s ease;
   transform-style:preserve-3d;
   backface-visibility:hidden;
   will-change:transform, filter;
@@ -146,23 +146,24 @@ a{color:inherit}
   transform:rotateY(-90deg);
 }
 
-/* État "ouvert" — les deux moitiés pivotent comme des portes, mais
-   s'arrêtent AVANT 90° pour rester visibles comme des panneaux inclinés
-   jusqu'au bout de l'animation (jamais vues en tranche ni dans le dos). */
+/* État "ouvert" — les portes pivotent largement vers l'extérieur,
+   s'arrêtent juste en-dessous de 90° pour rester lisibles comme des
+   panneaux inclinés tout au long du mouvement, puis l'overlay fade
+   out pour céder la place au contenu. */
 .opening.opened .floral-door-l{
-  transform:rotateY(-78deg);
-  filter:brightness(.8);
+  transform:rotateY(-88deg);
+  filter:brightness(.75);
 }
 .opening.opened .floral-door-r{
-  transform:rotateY(78deg);
-  filter:brightness(.8);
+  transform:rotateY(88deg);
+  filter:brightness(.75);
 }
 
-/* Pendant l'ouverture, le fond du cadre s'estompe pour laisser voir le
-   site entre les portes restées visibles sur les côtés. */
+/* Pendant l'ouverture, le fond du cadre s'estompe en fin de rotation
+   pour que l'arche derrière prenne la place sans coupure. */
 .opening,
 .floral-cover{
-  transition:background 1s ease 1.2s, box-shadow 1s ease 1.2s, opacity .6s ease, visibility .6s ease;
+  transition:background .8s ease 1.4s, box-shadow .8s ease 1.4s, opacity .9s ease .9s, visibility .9s ease .9s;
 }
 .opening.opened{background:transparent}
 .opening.opened .floral-cover{background:transparent;box-shadow:none}
