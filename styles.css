@@ -88,6 +88,34 @@ a{color:inherit}
 }
 .floral-inner-mirror{transform:scaleX(-1)}
 
+/* Panneau décoratif arché sur chaque porte — un double trait brun
+   discret qui dessine le contour d'un panneau menuisé, pour que la
+   porte lise visuellement comme un battant architectural et pas
+   comme une simple surface fleurie. */
+.door-panel{
+  position:absolute;
+  top:5%;left:12%;right:12%;bottom:8%;
+  width:76%;height:87%;
+  pointer-events:none;
+  mix-blend-mode:multiply;
+  opacity:.75;
+  z-index:1;
+}
+
+/* Poignée ovale, montée sur le bord intérieur de la porte gauche —
+   gradient radial pour simuler le volume d'une bombe en relief,
+   fine décoration intérieure en traits bruns. */
+.door-handle{
+  position:absolute;
+  top:50%;
+  width:48px;height:72px;
+  transform:translateY(-50%);
+  pointer-events:none;
+  z-index:3;
+  filter:drop-shadow(0 4px 7px rgba(90,55,45,.45));
+}
+.floral-door-l .door-handle{right:6px}
+
 /* Bordure 2D — un bandeau rose/beige lisse sur le bord intérieur de
    chaque porte, posé à plat sur la face. Reproduit l'aspect de la
    tranche d'un panneau plâtré/papier dans la même famille de teintes
